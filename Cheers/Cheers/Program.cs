@@ -10,18 +10,26 @@ namespace Cheers
     {
         static void Main(string[] args)
         {
+            string name, birthday;
+            GetName(out name, out birthday);
+
+            BirthdayCheer(name, birthday);
+
+
+        }
+
+        private static void GetName(out string name, out string birthday)
+        {
             Console.WriteLine("Hey What's Your Name?");
 
-            string name = Console.ReadLine();
-            
+            name = Console.ReadLine();
             Console.WriteLine("Hey, " + name + " When is your Birthday? (MM/DD)");
 
-            string birthday = Console.ReadLine();
-            
-            for(int i=0; i<name.Length; i++)
+            birthday = Console.ReadLine();
+            for (int i = 0; i < name.Length; i++)
             {
                 bool isVowel = "halfnorsemix".IndexOf(name[i].ToString(), StringComparison.InvariantCultureIgnoreCase) >= 0;
-                if(isVowel)
+                if (isVowel)
                 {
                     Console.WriteLine("Give me an ... " + Char.ToLower(name[i]));
                 }
@@ -29,9 +37,12 @@ namespace Cheers
                 {
                     Console.WriteLine("Give me a ..." + Char.ToLower(name[i]));
                 }
-                 
             }
+            Console.WriteLine(name.ToUpper() + " is GRAND!");
+        }
 
+        private static void BirthdayCheer(string name, string birthday)
+        {
             DateTime monthAndDay = DateTime.Parse(birthday).AddYears(1);
 
             DateTime today = DateTime.Now;
@@ -40,17 +51,17 @@ namespace Cheers
 
             int daysAway = diff.Days;
             daysAway++;
-            if(daysAway == 366)
+            if (daysAway == 366)
             {
                 Console.WriteLine("Happy Birthday " + name + "!");
             }
             else
             {
-                if(daysAway > 365)
+                if (daysAway > 365)
                 {
                     daysAway = daysAway - 366;
 
-                    if(daysAway == 1)
+                    if (daysAway == 1)
                     {
                         Console.WriteLine(name + " your birthday is " + daysAway + " day away");
                     }
@@ -59,16 +70,12 @@ namespace Cheers
                         Console.WriteLine(name + " your birthday is " + daysAway + " days away");
                     }
                 }
-                else 
+                else
                 {
                     Console.WriteLine(name + " your birthday is " + daysAway + " days away");
                 }
-                
+
             }
-
-            Console.WriteLine(name.ToUpper() + " is GRAND!");
-
-
         }
     }
 }
