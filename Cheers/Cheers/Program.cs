@@ -59,7 +59,7 @@ namespace Cheers
                         Console.WriteLine(name + " your birthday is " + daysAway + " days away");
                     }
                 }
-                else
+                else 
                 {
                     Console.WriteLine(name + " your birthday is " + daysAway + " days away");
                 }
